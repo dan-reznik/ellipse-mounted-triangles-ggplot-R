@@ -10,6 +10,10 @@ output:
 
 Para el amigo Antonio Sánchez Chinchón `@aschinchon`
 
+- [github](https://github.com/dan-reznik/ellipse-mounted-triangles-ggplot-R)
+- [js app](https://bit.ly/3gzeCli)
+- [more info](https://dan-reznik.github.io/ellipse-mounted-triangles/)
+
 ```{r,message=F}
 library(tidyverse)
 library(ggforce)
