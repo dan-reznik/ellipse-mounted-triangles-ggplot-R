@@ -5,7 +5,6 @@ edist <- function(x1,y1,x2,y2) {
   sqrt(dx*dx+dy*dy)
 }
 
-
 get_ellipse_point <- function(a,tDeg) {
   t <- toRad(tDeg)
   tibble(x=a*sin(t),y=cos(t))
@@ -16,16 +15,6 @@ get_ellipse_foci <- function(a) {
   tibble(x=c(-c,c),y=c(0,0))
 }
 
-#function orthic_triangle(orbit,sides) {
-#  let [cA,cB,cC]=tri_cosines(sides);
-#  /* can and will overflow */
-#    let secA=1/cA, secB=1/cB, secC=1/cC;
-#    let ts=[[0,secB,secC],
-#            [secA,0,secC],
-#            [secA,secB,0]];
-#    return generic_triangle(orbit,sides,ts);
-#}
-
 get_locus <- function(a,degStep,tri_fn,tri_derived_fn,x_fn) {
   degs <- seq(0,360,degStep)
   tris <- degs %>% map(~{tri_fn(a,.x)})
@@ -33,9 +22,6 @@ get_locus <- function(a,degStep,tri_fn,tri_derived_fn,x_fn) {
   df_xs <- tris_derived %>% map_dfr(x_fn)
   df_xs %>% mutate(deg=degs,.before=x)
 }
-
-#tri_homothetic(a,tDeg)
-#tri_orthic(df_tri)
 
 draw_scene <- function(a,tDeg,tri_fn,tri_derived_fn,X_fn,
                        df_locus) {

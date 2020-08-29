@@ -31,9 +31,6 @@ dot3 <- function(v1,v2) {
 }
 
 trilin_to_cartesian <- function(df_tri,sides,ts) {
-  #[A, B, C], //(* vertices *)
-  #[a, b, c], // (* side lengths *)
-  #[x, y, z]) //(* trilinears *)
   v <- c(sides[1]*ts[1],sides[2]*ts[2],sides[3]*ts[3])
   denom <- v[1]+v[2]+v[3]
   x <- dot3(v, df_tri$x) / denom
@@ -41,10 +38,6 @@ trilin_to_cartesian <- function(df_tri,sides,ts) {
 
   tibble(x=x,y=y)
 }
-
-#function generic_triangle(orbit,sides,ts) {
-#  return ts.map(t=>trilin_to_cartesian(orbit,sides,t));
-#}
 
 tri_generic <- function(df_tri, sides, ts_list) {
   bind_rows(trilin_to_cartesian(df_tri,sides,ts_list$row1),
