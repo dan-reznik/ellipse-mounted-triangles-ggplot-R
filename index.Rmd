@@ -1,0 +1,44 @@
+---
+title: "Locus of X(131)-of-orthic for Homothetic Poncelet Triangles"
+author: Dan S. Reznik
+date: August 29, 2020
+output:
+  html_document:
+    theme: sandstone
+    highlight: tango
+---
+
+Para el amigo Antonio Sánchez Chinchón `@aschinchon`
+
+```{r,message=F}
+library(tidyverse)
+library(ggforce)
+source("utils.R")
+source("tri.R")
+```
+
+Global parameters
+
+```{r}
+a <- 2.91
+tDegStep <- .25
+tri_fn <- tri_homothetic
+tri_derived_fn <- tri_orthic
+X_fn <- tri_X131
+```
+
+Calculates locus (slow!)
+
+```{r,cache=T}
+df_locus <- get_locus(a,tDegStep,tri_fn,tri_derived_fn,X_fn)
+nrow(df_locus)
+```
+
+Draws the friggin' locus
+
+```{r}
+draw_scene(a,20.0,tri_fn,tri_derived_fn,X_fn,df_locus) +
+  theme_minimal()
+```
+
+Chevere!
