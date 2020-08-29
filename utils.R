@@ -39,5 +39,13 @@ draw_scene <- function(a,tDeg,tri_fn,tri_derived_fn,X_fn,
     geom_path(aes(x,y),color="red",size=1.25,data=df_locus) +
     geom_point(aes(x,y),color="red",size=2.5, data=df_X) +
     geom_text(aes(x,y),label="X131",color="red",data=df_X,vjust=-.2,hjust=-.2) +
-    coord_fixed()
+    coord_fixed() +
+    theme_minimal()
+}
+
+calc_and_draw <- function(a,tDeg,tDegStep,
+                          tri_fn,tri_derived_fn,X_fn) {
+  df_locus <- get_locus(a,tDegStep,tri_fn,
+                        tri_derived_fn,X_fn)
+  draw_scene(a,tDeg,tri_fn,tri_derived_fn,X_fn,df_locus)
 }

@@ -8,41 +8,45 @@ output:
     highlight: tango
 ---
 
-Para el amigo Antonio Sánchez Chinchón `@aschinchon`
+Visualization of loci of centers of ellipse-mounted triangles. 
 
-- [github](https://github.com/dan-reznik/ellipse-mounted-triangles-ggplot-R)
-- [js app](https://bit.ly/3gzeCli)
-- [more info](https://dan-reznik.github.io/ellipse-mounted-triangles/)
+Para el amigo Antonio Sánchez Chinchón `@aschinchon`
 
 ```{r,message=F}
 library(tidyverse)
 library(ggforce)
 source("utils.R")
 source("tri.R")
+source("mount.R")
 ```
 
-Global parameters
+# Intro 
+
+Visualization of loci of centers of ellipse-mounted triangles using R's ggplot.
+
+## X(131)-of-orthic
+
+Family: Poncelet 3-periodics within two homothetic ellipses.
 
 ```{r}
-a <- 2.91
-tDegStep <- .25
-tri_fn <- tri_homothetic
-tri_derived_fn <- tri_orthic
-X_fn <- tri_X131
+calc_and_draw(2.91,20.0,0.2,
+              mount_homothetic,tri_orthic,tri_X131)
 ```
 
-Calculates locus (slow!)
+## X(138)-of-orthic
 
-```{r,cache=T}
-df_locus <- get_locus(a,tDegStep,tri_fn,tri_derived_fn,X_fn)
-nrow(df_locus)
-```
-
-Draws the friggin' locus
+$V_1$ and $V_2$ mounted on ellipse vertices, and $P(t)$ slides over ellipse.
 
 ```{r}
-draw_scene(a,20.0,tri_fn,tri_derived_fn,X_fn,df_locus) +
-  theme_minimal()
+calc_and_draw(2.6,20.0,0.1,
+              mount_major,tri_orthic,tri_X138)
 ```
 
-Chevere!
+# More Info:
+
++ [github](https://github.com/dan-reznik/ellipse-mounted-triangles-ggplot-R)
++ [js app](https://bit.ly/3gzeCli)
++ [more info](https://dan-reznik.github.io/ellipse-mounted-triangles/)
++ [ETC]
+
+*Chevere!*
