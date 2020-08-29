@@ -1,5 +1,5 @@
 ---
-title: "Locus of X(131)-of-orthic for Homothetic Poncelet Triangles"
+title: "Locus of X(131)-of-Orthic (Homothetic Poncelet)"
 author: Dan S. Reznik
 date: August 29, 2020
 output:
